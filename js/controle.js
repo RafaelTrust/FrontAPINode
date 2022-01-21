@@ -2,7 +2,7 @@
 //READ (pegando valores existentes no banco)
 async function getContent(){
     try {
-        const response = await fetch('http://localhost:3000/usr')   
+        const response = await fetch('https://crudrafaeltrust.herokuapp.com/usr')   
 
         const data = await response.json()
         show(data)
@@ -77,7 +77,7 @@ async function createUsuario(event){
     event.preventDefault();
     let novoUsuario = reunirInfoForm();
     try {
-        const response = await fetch('http://localhost:3000/usr', {
+        const response = await fetch('https://crudrafaeltrust.herokuapp.com/usr', {
         method: "POST",
         headers:{
             'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ async function createUsuario(event){
         },
         body: JSON.stringify(novoUsuario)
         }) 
-        const users = await fetch('http://localhost:3000/usr')
+        const users = await fetch('https://crudrafaeltrust.herokuapp.com/usr')
         const data = await users.json();
         show(data)
     } catch (error) {
@@ -120,14 +120,14 @@ async function updateUsuario(event){
     zerarUpdate.innerHTML = ""
     console.log(`${upUsuario.name} esta atualizando`)
     try {
-        await fetch(`http://localhost:3000/usr/${upUsuario.id}`, {
+        await fetch(`https://crudrafaeltrust.herokuapp.com/usr/${upUsuario.id}`, {
             method: "PATCH",
             body: JSON.stringify(upUsuario),
             headers: {
                 'Content-Type': 'application/json',
             }
         })
-        const users = await fetch('http://localhost:3000/usr')
+        const users = await fetch('https://crudrafaeltrust.herokuapp.com/usr')
         const data = await users.json();
         show(data)
     } catch (error) {
@@ -139,10 +139,10 @@ async function updateUsuario(event){
 //DELETE (deletando o usuario)
 async function deleteUsuario(id){
     try {
-        const resposta = await fetch(`http://localhost:3000/usr/${id}`, {
+        const resposta = await fetch(`https://crudrafaeltrust.herokuapp.com/usr/${id}`, {
             method: "DELETE"
         })   
-        const users = await fetch('http://localhost:3000/usr')
+        const users = await fetch('https://crudrafaeltrust.herokuapp.com/usr')
         const data = await users.json();
         show(data)
     } catch (error) {

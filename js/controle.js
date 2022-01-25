@@ -123,12 +123,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 //CREATE (colocando o usuario no banco)
-function createUsuario(event){
+async function createUsuario(event){
     const usuarioForm = document.querySelector('#createUsuario')
     const file = document.getElementById('fileCreate')
     let novoUsuario = new FormData(usuarioForm);
 
-    fetch('https://crudapirafaeltrust.herokuapp.com/usr', {
+    await fetch('https://crudapirafaeltrust.herokuapp.com/usr', {
         method: 'POST',
         body: novoUsuario,
         redirect: 'follow'
@@ -178,12 +178,12 @@ function voltar(){
 
 
 //atualizando usuario após o evento
-function updateUsuario(event){
+async function updateUsuario(event){
     const usuarioUpForm = document.querySelector('#updateUsuario')
     let usuarioUp = new FormData(usuarioUpForm);
 
     if(!((usuarioUp.get('boolAnexo') === "true") && (usuarioUp.get('anexo').name === ''))){
-        fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${usuarioUp.get("id")}`, {
+        await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${usuarioUp.get("id")}`, {
             method: 'PATCH',
             body: usuarioUp,
             redirect: 'follow'
@@ -203,7 +203,7 @@ function delUsuario(id){
 }
 
 //DELETE (deletando o usuario)
-function deleteUsuario(event){
+async function deleteUsuario(event){
     let id = document.querySelector('#idDelete').value
     
     var requestOptions = {
@@ -211,7 +211,7 @@ function deleteUsuario(event){
         redirect: 'follow'
       };
       
-      fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, requestOptions)
+      await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));

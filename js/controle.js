@@ -1,6 +1,6 @@
 //valor da url da api
 //const url ='http://localhost:8877'
-const url = 'https://crudapirafaeltrust.herokuapp.com'
+//const url = 'https://crudapirafaeltrust.herokuapp.com'
 var idUsuarios = new Array()
 var usuariosBanco = new Array({})
 var pagina = 1;
@@ -10,7 +10,7 @@ var totalPaginacao = 0;
 async function getContent(){
     usuariosBanco = new Array()
     try {
-        const response = await fetch(`${url}/usr`)   
+        const response = await fetch('https://crudapirafaeltrust.herokuapp.com/usr')   
 
         const data = await response.json()
         for(let user of data){
@@ -28,7 +28,7 @@ async function getContentEvent(event){
     event.preventDefault();
     usuariosBanco = new Array()
     try {
-        const response = await fetch(`${url}/usr`)   
+        const response = await fetch('https://crudapirafaeltrust.herokuapp.com/usr')   
 
         const data = await response.json()
         for(let user of data){
@@ -128,7 +128,7 @@ function createUsuario(event){
     const file = document.getElementById('fileCreate')
     let novoUsuario = new FormData(usuarioForm);
 
-    fetch(`${url}/usr`, {
+    fetch('https://crudapirafaeltrust.herokuapp.com/usr', {
         method: 'POST',
         body: novoUsuario,
         redirect: 'follow'
@@ -183,7 +183,7 @@ function updateUsuario(event){
     let usuarioUp = new FormData(usuarioUpForm);
 
     if(!((usuarioUp.get('boolAnexo') === "true") && (usuarioUp.get('anexo').name === ''))){
-        fetch(`${url}/usr/${usuarioUp.get("id")}`, {
+        fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${usuarioUp.get("id")}`, {
             method: 'PATCH',
             body: usuarioUp,
             redirect: 'follow'
@@ -240,7 +240,7 @@ function selecionando(id){
 async function deleteVariosUsuario(){ 
     try {
         for(var id of idUsuarios){
-            const resposta = await fetch(`${url}/usr/${id}`, {
+            const resposta = await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, {
                 method: "DELETE"
             })
         }

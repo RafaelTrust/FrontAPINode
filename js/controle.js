@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 //CREATE (colocando o usuario no banco)
 async function createUsuario(event){
+    event.preventDefault();
     const usuarioForm = document.querySelector('#createUsuario')
     const file = document.getElementById('fileCreate')
     let novoUsuario = new FormData(usuarioForm);
@@ -179,6 +180,7 @@ function voltar(){
 
 //atualizando usuario após o evento
 async function updateUsuario(event){
+    event.preventDefault();
     const usuarioUpForm = document.querySelector('#updateUsuario')
     let usuarioUp = new FormData(usuarioUpForm);
 
@@ -204,6 +206,7 @@ function delUsuario(id){
 
 //DELETE (deletando o usuario)
 async function deleteUsuario(event){
+    event.preventDefault();
     let id = document.querySelector('#idDelete').value
     
     var requestOptions = {

@@ -136,6 +136,7 @@ async function createUsuario(event){
     }).then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
+    location.reload()
 }
 
 //UPDATE (atualizando o usuario no banco)
@@ -195,6 +196,7 @@ async function updateUsuario(event){
     }else{
         alert('Anexo vazio! Precisa colocar algum arquivo em anexo ou trocar para não inserir')
     }
+    location.reload()
 }
 
 function delUsuario(id){
@@ -212,12 +214,13 @@ async function deleteUsuario(event){
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
-      };
-      
-      await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, requestOptions)
+    };
+    
+    await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+    location.reload()
 }
 
 function selecionando(id){

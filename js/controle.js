@@ -203,16 +203,18 @@ function delUsuario(id){
 }
 
 //DELETE (deletando o usuario)
-async function deleteUsuario(event){
+function deleteUsuario(event){
     let id = document.querySelector('#idDelete').value
-    try {
-        const resposta = await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, {
-            method: "DELETE"
-        })   
-        getContent()
-    } catch (error) {
-        console.log(error)
-    }
+    
+    var requestOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+      };
+      
+      fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function selecionando(id){

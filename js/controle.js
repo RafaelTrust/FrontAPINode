@@ -206,7 +206,7 @@ function delUsuario(id){
 async function deleteUsuario(event){
     let id = document.querySelector('#idDelete').value
     try {
-        const resposta = await fetch(`${url}/usr/${id}`, {
+        const resposta = await fetch(`https://crudapirafaeltrust.herokuapp.com/usr/${id}`, {
             method: "DELETE"
         })   
         getContent()
